@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>WebChatSales — Sales While You Sleep</title>
+<style>
+  /* ===== WebChatSales — Desktop-first, single-file, Safari-safe ===== */
+  :root{
+    --blue:#0054A8;        /* Detroit Lions blue-ish */
+    --blue-dark:#003C78;
+    --ink:#111827;
+    --muted:#6B7280;
+    --line:#E5E7EB;
+    --bg:#FFFFFF;
+  }
+  *{box-sizing:border-box}
+  html,body{
+    margin:0; padding:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+  }
+  .container{max-width:1140px; margin:0 auto; padding:0 24px}
+
+  /* Header */
+  .header{position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); z-index:10}
+  .header-inner{height:76px; display:flex; align-items:center; gap:28px}
+  .brand{display:flex; align-items:center; gap:12px; font-weight:800}
+  .logo-box{width:22px; height:22px; border-radius:6px; background:var(--blue)}
+  .brand-text{font-size:22px; letter-spacing:.2px}
+  .nav{display:flex; gap:22px; margin-left:auto}
+  .nav a{color:var(--ink); text-decoration:none; font-weight:600; opacity:.9}
+  .nav a:hover{opacity:1}
+  .btn{display:inline-flex; align-items:center; justify-content:center; border-radius:8px; border:1px solid transparent; padding:12px 18px; font-weight:700; text-decoration:none; cursor:pointer}
+  .btn.sm{padding:10px 14px; font-size:14px}
+  .btn-primary{background:var(--blue); border-color:var(--blue-dark); color:#fff}
+  .btn-invert{background:#fff; border-color:#fff; color:var(--blue)}
+  .btn-ghost{background:transparent; border-color:#fff; color:#fff}
+  .btn.block{width:100%}
+
+  /* Hero */
+  .hero{position:relative; height:420px; background:var(--blue); color:#fff; overflow:hidden}
+  .hero-underlay{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(1200px 420px at 20% 20%, rgba(255,255,255,.15), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,0) 40%),
+      linear-gradient(90deg, rgba(0,0,0,.10), transparent 45%);
+    opacity:.95;
+  }
+  .hero-content{position:relative; height:100%; display:flex; flex-direction:column; justify-content:center; gap:14px}
+  .hero-title{font-size:48px; line-height:1.05; margin:0; text-shadow:0 6px 24px rgba(0,0,0,.25)}
+  .hero-sub{font-size:18px; opacity:.98; margin:2px 0 0}
+  .hero-ctas{display:flex; gap:14px; margin-top:16px}
+
+  /* Trust row */
+  .trust{padding:20px 0; border-bottom:1px solid var(--line)}
+  .trust p{text-align:center; color:#374151; font-weight:600; margin:0}
+
+  /* Pricing */
+  .pricing{padding:56px 0}
+  .section-title{text-align:center; font-size:28px; margin:0 0 28px}
+  .tiers{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+  .tier{border:1px solid var(--line); border-radius:12px; padding:20px; background:#fff; box-shadow:0 4px 14px rgba(0,0,0,.04)}
+  .tier.featured{outline:2px solid var(--blue); box-shadow:0 12px 30px rgba(0,84,168,.18)}
+  .tier-head{display:flex; align-items:center; justify-content:space-between; margin-bottom:10px}
+  .tier-name{font-size:20px; margin:0}
+  .tier-price{font-size:22px; color:var(--blue); font-weight:800}
+  .tier-price span{font-size:14px; font-weight:700; color:var(--muted)}
+  .tier-list{margin:10px 0 16px 0; padding-left:18px; line-height:1.8; color:#1f2937}
+  .contact-line{text-align:center; margin-top:22px; color:#374151}
+
+  /* Footer */
+  .footer{border-top:1px solid var(--line); background:#fff}
+  .footer-inner{height:84px; display:flex; align-items:center; justify-content:space-between}
+  .f-links a{color:var(--ink); text-decoration:none; margin-left:24px; opacity:.85}
+  .f-links a:hover{opacity:1}
+
+  /* Abby bubble */
+  .abby{
+    position:fixed; right:24px; bottom:24px; display:inline-flex; align-items:center; gap:8px;
+    padding:12px 14px; border-radius:999px; background:var(--blue); border:1px solid var(--blue-dark);
+    color:#fff; font-weight:800; box-shadow:0 10px 24px rgba(0,84,168,.35);
+  }
+  .abby .dot{width:10px; height:10px; border-radius:50%; background:#fff; display:inline-block}
+
+  /* Simple mobile support so it still looks good on iPhone */
+  @media (max-width: 800px){
+    .hero{height:auto; padding:56px 0}
+    .hero-title{font-size:36px}
+    .tiers{grid-template-columns:1fr; gap:18px}
+    .header-inner{height:auto; padding:14px 0; flex-wrap:wrap}
+    .nav{width:100%; justify-content:center; margin:0}
+  }
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo-box" aria-hidden="true"></div>
+        <div class="brand-text">WebChatSales</div>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <a href="#">Home</a>
+        <a href="#">Pricing</a>
+       
